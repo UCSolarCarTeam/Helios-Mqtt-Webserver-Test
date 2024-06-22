@@ -2,6 +2,7 @@ import { type MqttClient, connect } from "mqtt";
 
 const options = "mqtt://test.mosquitto.org";
 const myTopic = "solarTopic";
+const myMessage = "Hello, world! from Client";
 export class SolarMQTTClient {
   client: MqttClient;
   constructor() {
@@ -13,7 +14,7 @@ export class SolarMQTTClient {
     client.on("connect", () => {
       client.subscribe(myTopic, (error) => {
         if (!error) {
-          client.publish(myTopic, "Hello, world! from Client");
+          client.publish(myTopic, myMessage);
         } else {
           console.error("Subscription error: ", error);
         }

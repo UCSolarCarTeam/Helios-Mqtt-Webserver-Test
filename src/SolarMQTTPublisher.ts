@@ -10,12 +10,24 @@ export class SolarMQTTPublisher {
     this.client = connect(options);
     this.initializeListeners(this.client);
   }
-
+  private generateNewPacket() {
+    const myPacket = {
+      timestamp: new Date().getUTCSeconds(),
+      data: (Math.random() * 100).toFixed(2),
+    };
+    return myPacket;
+  }
+  private sendPacketEverySecond() {
+    setInterval(() => {
+      const myPacket = this.generateNewPacket();
+      this.client.publish(myTopic, JSON.stringify(myPacket));
+    }, 1000);
+  }
   private initializeListeners(client: MqttClient) {
     client.on("connect", () => {
       client.subscribe(myTopic, (error) => {
         if (!error) {
-          client.publish(myTopic, "Hello, world! from publisher");
+          this.sendPacketEverySecond();
         } else {
           console.error("Subscription error: ", error);
         }
