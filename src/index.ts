@@ -1,4 +1,5 @@
 import express, { Request, Response, NextFunction } from "express";
+import main from "./main";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,6 +21,8 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
-  console.log("port is: ", process.env.PORT);
-  console.log("MQQT port is: ", process.env.MQTT_PORT);
+  console.log("port is: ", process.env.PORT || 1833);
+  console.log("MQQT port is: ", process.env.MQTT_PORT || 1883);
 });
+
+main();
