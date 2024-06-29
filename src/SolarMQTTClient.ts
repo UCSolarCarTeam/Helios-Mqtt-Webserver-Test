@@ -1,12 +1,12 @@
 import { type MqttClient, connect } from "mqtt";
+import { MQTTOptions } from "./main";
 
-const options = "mqtt://test.mosquitto.org";
 const myTopic = "solarTopic";
 const myMessage = "Hello, world! from Client";
 export class SolarMQTTClient {
   client: MqttClient;
-  constructor() {
-    this.client = connect(options);
+  constructor(options: MQTTOptions) {
+    this.client = connect(options.url);
     this.initializeListeners(this.client);
   }
 

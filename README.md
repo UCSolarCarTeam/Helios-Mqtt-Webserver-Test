@@ -10,6 +10,12 @@ MQTT (Message Queuing Telemetry Transport) is a communication protocol designed 
 - **Aedes** : An npm library that implements the MQTT protocol as a server.
 - **Topic** : A connection string that segregates different types of messages on the broker, similar to a channel. Topics categorize information being published and subscribed to on the server.
 
+## How to use this tool
+
+1. Run npm i
+2. update config.ts
+3. run npm run dev
+
 ## Why do we need MQTT?
 
 The Calgary Solar Car team uses the MQTT protocol to effectively communicate between Helios, the Solar Car, and the [Telemetry server](https://github.com/UCSolarCarTeam/Helios-Telemetry). Helios transmits data such as speed, battery percentage, fault data, etc., in 5kb packets. These packets are then sent to the server where the Telemetry team can process the data and view it in real time. To reliably send and receive this data on the server, MQTT is implemented instead of other communication protocols such as HTTP to address several issues:
