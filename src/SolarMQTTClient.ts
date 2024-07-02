@@ -1,6 +1,5 @@
-import { topics } from "./config";
+import { MQTTOptions, topics } from "./config";
 import { type MqttClient, connect } from "mqtt";
-import { MQTTOptions } from "./main";
 import ITelemetryData from "./utils";
 const { packetTopic, pingTopic } = topics;
 export class SolarMQTTClient {

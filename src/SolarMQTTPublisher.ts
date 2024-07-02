@@ -1,8 +1,7 @@
-import { topics } from "./config";
+import { MQTTOptions, topics } from "./config";
 // This file emulates the publisher of the MQTT protocol.
 // This will be on the raspberry pi and will be responsible for sending the data to the broker.
 import { type MqttClient, connect } from "mqtt";
-import { MQTTOptions } from "./main";
 import ITelemetryData, { generateFakeTelemetryData } from "./utils";
 const { packetTopic, pingTopic } = topics;
 export class SolarMQTTPublisher {
