@@ -1,10 +1,8 @@
+import { topics } from "./config";
 import { type MqttClient, connect } from "mqtt";
 import { MQTTOptions } from "./main";
 import ITelemetryData from "./utils";
-
-const packetTopic = "packet";
-const myMessage = "Connection established";
-const pingTopic = "ping";
+const { packetTopic, pingTopic } = topics;
 export class SolarMQTTClient {
   client: MqttClient;
   constructor(options: MQTTOptions) {
@@ -12,6 +10,7 @@ export class SolarMQTTClient {
     this.initializeListeners(this.client);
   }
   private pingTimer(miliseconds: number) {
+    const myMessage = "Connection established";
     setInterval(() => {
       this.client.publish(pingTopic, myMessage);
     }, miliseconds);
