@@ -275,7 +275,8 @@ export function generateFakeTelemetryData(): ITelemetryData {
         Temperature: faker.number.int({ min: 0, max: 100 }),
       },
     ],
-    TimeStamp: faker.date.soon().valueOf(),
+    TimeStamp: Date.now(),
+    // TimeStamp: faker.date.soon().valueOf(),
   };
 }
 enum Motor {
