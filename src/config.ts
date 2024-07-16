@@ -7,4 +7,5 @@ export const options: MQTTOptions = {
 export const topics = {
   packetTopic: "packet",
   pingTopic: "ping",
+  pongTopic: "pong",
 };
