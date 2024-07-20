@@ -26,7 +26,11 @@ The Calgary Solar Car team uses the MQTT protocol to effectively communicate bet
 - **Communication Model** : MQTT implements a publish/subscribe model rather than a request/response model, which is ideal when connected clients need to receive the same message.
 - **Speed** : MQTT maintains a persistent connection over TCP, allowing for faster communication after the initial handshake. This is crucial for real-time data transmission.
 
-Learn more here:
+## How does Helios use MQTT?
+
+![image](https://github.com/user-attachments/assets/bb974244-1b7d-4f4d-ad68-38afd6089c53)
+
+## Additional Resources:
 
 - [MQTT.org](https://mqtt.org/)
 - [MQTT on npm](https://www.npmjs.com/package/mqtt)
