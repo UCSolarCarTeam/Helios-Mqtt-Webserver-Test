@@ -30,8 +30,52 @@ The Calgary Solar Car team uses the MQTT protocol to effectively communicate bet
 
 ![image](https://github.com/user-attachments/assets/bb974244-1b7d-4f4d-ad68-38afd6089c53)
 
+## Simulating a Publisher
+
+If you want to simulate a publisher without access to the car follow these steps:
+
+1. Navigate to the main.ts file.
+1. Comment out the mqttClient variable.
+1. Start the project.
+
+Start the Helios-Telemetry project to see if its MQTT client is sucessfully receiving data from the publisher. 
+
+## Project Structure
+
+This section provides an overview of the various files and directories within the Helios-MQTT-Webserver-Test project, explaining their purpose and how they fit into the overall project.
+
+- **index.ts**: The entry point of the application.
+Sets up an Express server with basic middleware to parse JSON bodies.
+Defines a simple route and error-handling middleware.
+Starts the server on a specified port and calls the main function.
+
+- **main.ts**: Initializes the main components of the application.
+Imports and creates instances of SolarMQTTPublisher and SolarMQTTClient with the specified options.
+
+- **config.ts**: This file contains the MQTT configuration settings.
+MQTTOptions type extends IClientOptions and includes a url string.
+options defines the MQTT connection options, including the broker URL.
+topics lists the MQTT topics used in the project.
+
+- **SolarMQTTClient.ts**: Defines the SolarMQTTClient class, which manages the MQTT client.
+Connects to the MQTT broker and subscribes to topics.
+Publishes ping messages at regular intervals and calculates latency based on received telemetry data.
+
+- **SolarMQTTPublisher.ts**: Defines the SolarMQTTPublisher class, which emulates an MQTT publisher.
+Connects to the MQTT broker and subscribes to topics.
+Sends packets with fake telemetry data at regular intervals and responds to ping messages with pong messages.
+
+- **Test.ts**: Contains a simple test function for MQTT communication.
+Connects to the MQTT broker and subscribes to a topic.
+Publishes a test message and logs any received messages.
+
+- **utils.ts**: Provides utility functions and types.
+generateFakeTelemetryData function creates fake telemetry data using the faker library.
+ITelemetryData interface defines the structure of telemetry data.
+
 ## Additional Resources:
 
 - [MQTT.org](https://mqtt.org/)
 - [MQTT on npm](https://www.npmjs.com/package/mqtt)
 - [Aedes on npm](https://www.npmjs.com/package/aedes)
+- [test.mosquitto.org](https://test.mosquitto.org/)
