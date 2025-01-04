@@ -1,6 +1,6 @@
 import { topics } from "./config";
 import { IClientOptions, type MqttClient, connect } from "mqtt";
-import ITelemetryData from "./utils";
+import { ITelemetryData } from "./types";
 const { packetTopic, pingTopic } = topics;
 export class SolarMQTTClient {
   client: MqttClient;
@@ -16,7 +16,7 @@ export class SolarMQTTClient {
   }
   private calculateLatency(packet: ITelemetryData) {
     const currentTime = Date.now();
-    const vehicleToClientLatency = currentTime - packet.TimeStamp;
+    const vehicleToClientLatency = currentTime - Number(packet.TimeStamp);
     console.log("Vehicle to Client Latency: ", vehicleToClientLatency, "ms");
   }
   private initializeListeners(client: MqttClient) {
