@@ -1,4 +1,3 @@
-
 export interface ITelemetryData {
   B3: IB3;
   Battery: IBattery;
@@ -14,7 +13,7 @@ export interface ITelemetryData {
   Pi: IPi;
   ProximitySensors: IProximitySensors;
   Telemetry: ITelemetry;
-  TimeStamp: string;
+  TimeStamp: number;
   Title: string;
 }
 
@@ -26,7 +25,7 @@ export interface ILapData {
   distance: number;
   lapTime: number;
   netPowerOut: number;
-  timeStamp: string;
+  timeStamp: number;
   totalPowerIn: number;
   totalPowerOut: number;
 }
@@ -42,7 +41,7 @@ export class LapData {
     amphours: number,
     averagePackCurrent: number,
     batterySecondsRemaining: number,
-    averageSpeed: number,
+    averageSpeed: number
   ) {
     this.timestamp = timestamp;
     this.lapTime = lapTime;

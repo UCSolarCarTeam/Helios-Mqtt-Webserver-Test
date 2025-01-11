@@ -36,8 +36,7 @@ export class SolarMQTTPublisher {
         args.includes("--lap") || args.includes("--l")
           ? this.generateNewLapPacket()
           : this.generateNewPacket();
-      // this.client.publish(packetTopic, JSON.stringify(packet));
-      console.log(packet);
+      this.client.publish(packetTopic, JSON.stringify(packet));
     }, 1000);
   }
   private initializeListeners(client: MqttClient) {
