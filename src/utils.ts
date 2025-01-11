@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { ITelemetryData } from "./types";
+import { ILapData, ITelemetryData } from "./types";
 
 export function generateFakeTelemetryData(): ITelemetryData {
   const timestamp = faker.date.recent(); // You can adjust the argument to control the recency of the date
@@ -534,5 +534,20 @@ export function generateFakeTelemetryData(): ITelemetryData {
     },
     TimeStamp: formattedTimestamp,
     Title: faker.lorem.words(2),
+  };
+}
+
+export function generateFakeLapData(): ILapData {
+  return {
+    ampHours: faker.number.int({ max: 100, min: 0 }),
+    averagePackCurrent: faker.number.int({ max: 100, min: 0 }),
+    averageSpeed: faker.number.int({ max: 100, min: 0 }),
+    batterySecondsRemaining: faker.number.int({ max: 100, min: 0 }),
+    distance: faker.number.int({ max: 100, min: 0 }),
+    lapTime: faker.number.int({ max: 100, min: 0 }),
+    netPowerOut: faker.number.int({ max: 100, min: 0 }),
+    timeStamp: faker.date.recent().toISOString(),
+    totalPowerIn: faker.number.int({ max: 100, min: 0 }),
+    totalPowerOut: faker.number.int({ max: 100, min: 0 }),
   };
 }

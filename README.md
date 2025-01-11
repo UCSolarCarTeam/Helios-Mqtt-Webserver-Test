@@ -16,6 +16,18 @@ MQTT (Message Queuing Telemetry Transport) is a communication protocol designed 
 2. update config.ts
 3. run npm run dev
 
+Just a note as well:
+
+```bash
+# This will generate lap packets
+npm run dev --lap
+OR
+npm run dev --l
+
+# This will generate packet data
+npm run dev
+```
+
 ## Why do we need MQTT?
 
 The Calgary Solar Car team uses the MQTT protocol to effectively communicate between Helios, the Solar Car, and the [Telemetry server](https://github.com/UCSolarCarTeam/Helios-Telemetry). Helios transmits data such as speed, battery percentage, fault data, etc., in 5kb packets. These packets are then sent to the server where the Telemetry team can process the data and view it in real time. To reliably send and receive this data on the server, MQTT is implemented instead of other communication protocols such as HTTP to address several issues:
@@ -38,40 +50,40 @@ If you want to simulate a publisher without access to the car follow these steps
 1. Comment out the mqttClient variable.
 1. Start the project.
 
-Start the Helios-Telemetry project to see if its MQTT client is sucessfully receiving data from the publisher. 
+Start the Helios-Telemetry project to see if its MQTT client is sucessfully receiving data from the publisher.
 
 ## Project Structure
 
 This section provides an overview of the various files and directories within the Helios-MQTT-Webserver-Test project, explaining their purpose and how they fit into the overall project.
 
 - **index.ts**: The entry point of the application.
-Sets up an Express server with basic middleware to parse JSON bodies.
-Defines a simple route and error-handling middleware.
-Starts the server on a specified port and calls the main function.
+  Sets up an Express server with basic middleware to parse JSON bodies.
+  Defines a simple route and error-handling middleware.
+  Starts the server on a specified port and calls the main function.
 
 - **main.ts**: Initializes the main components of the application.
-Imports and creates instances of SolarMQTTPublisher and SolarMQTTClient with the specified options.
+  Imports and creates instances of SolarMQTTPublisher and SolarMQTTClient with the specified options.
 
 - **config.ts**: This file contains the MQTT configuration settings.
-MQTTOptions type extends IClientOptions and includes a url string.
-options defines the MQTT connection options, including the broker URL.
-topics lists the MQTT topics used in the project.
+  MQTTOptions type extends IClientOptions and includes a url string.
+  options defines the MQTT connection options, including the broker URL.
+  topics lists the MQTT topics used in the project.
 
 - **SolarMQTTClient.ts**: Defines the SolarMQTTClient class, which manages the MQTT client.
-Connects to the MQTT broker and subscribes to topics.
-Publishes ping messages at regular intervals and calculates latency based on received telemetry data.
+  Connects to the MQTT broker and subscribes to topics.
+  Publishes ping messages at regular intervals and calculates latency based on received telemetry data.
 
 - **SolarMQTTPublisher.ts**: Defines the SolarMQTTPublisher class, which emulates an MQTT publisher.
-Connects to the MQTT broker and subscribes to topics.
-Sends packets with fake telemetry data at regular intervals and responds to ping messages with pong messages.
+  Connects to the MQTT broker and subscribes to topics.
+  Sends packets with fake telemetry data at regular intervals and responds to ping messages with pong messages.
 
 - **Test.ts**: Contains a simple test function for MQTT communication.
-Connects to the MQTT broker and subscribes to a topic.
-Publishes a test message and logs any received messages.
+  Connects to the MQTT broker and subscribes to a topic.
+  Publishes a test message and logs any received messages.
 
 - **utils.ts**: Provides utility functions and types.
-generateFakeTelemetryData function creates fake telemetry data using the faker library.
-ITelemetryData interface defines the structure of telemetry data.
+  generateFakeTelemetryData function creates fake telemetry data using the faker library.
+  ITelemetryData interface defines the structure of telemetry data.
 
 ## Additional Resources:
 
