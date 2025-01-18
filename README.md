@@ -12,9 +12,17 @@ MQTT (Message Queuing Telemetry Transport) is a communication protocol designed 
 
 ## How to use this tool
 
-1. Run npm i
-2. update config.ts
-3. run npm run dev
+1. Create a .env file with the following fields:
+
+```
+MQTT_USERNAME=
+MQTT_PASSWORD=
+```
+(ask your lead for these keys)
+
+2. Run npm i
+3. update config.ts
+4. run npm run dev
 
 Just a note as well:
 

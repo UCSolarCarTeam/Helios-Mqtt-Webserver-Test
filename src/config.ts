@@ -1,13 +1,15 @@
 import { IClientOptions } from "mqtt/*";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const options: IClientOptions = {
-  password: "hasAedes",
+  password: process.env.MQTT_PASSWORD,
   protocol: "tcp",
-  // host: "127.0.0.1",
   host: "aedes.calgarysolarcar.ca",
   port: 1883,
   protocolVersion: 3,
-  username: "urMom",
+  username: process.env.MQTT_USERNAME,
 };
 export const topics = {
   packetTopic: "packet",
