@@ -192,7 +192,7 @@ export function generateFakeTelemetryData(): ITelemetryData {
       ArrayVoltage: faker.number.int({ max: 100, min: 0 }),
       BatteryVoltage: faker.number.int({ max: 100, min: 0 }),
       ChannelNumber: faker.number.int({ max: 100, min: 0 }),
-      IsAlive: faker.number.int({ max: 100, min: 0 }),
+      IsAlive: faker.datatype.boolean(),
       Temperature: faker.number.int({ max: 100, min: 0 }),
     },
     MPPT1: {
@@ -200,7 +200,7 @@ export function generateFakeTelemetryData(): ITelemetryData {
       ArrayVoltage: faker.number.int({ max: 100, min: 0 }),
       BatteryVoltage: faker.number.int({ max: 100, min: 0 }),
       ChannelNumber: faker.number.int({ max: 100, min: 0 }),
-      IsAlive: faker.number.int({ max: 100, min: 0 }),
+      IsAlive: faker.datatype.boolean(),
       Temperature: faker.number.int({ max: 100, min: 0 }),
     },
     MPPT2: {
@@ -208,7 +208,7 @@ export function generateFakeTelemetryData(): ITelemetryData {
       ArrayVoltage: faker.number.int({ max: 100, min: 0 }),
       BatteryVoltage: faker.number.int({ max: 100, min: 0 }),
       ChannelNumber: faker.number.int({ max: 100, min: 0 }),
-      IsAlive: faker.number.int({ max: 100, min: 0 }),
+      IsAlive: faker.datatype.boolean(),
       Temperature: faker.number.int({ max: 100, min: 0 }),
     },
     MPPT3: {
@@ -216,7 +216,7 @@ export function generateFakeTelemetryData(): ITelemetryData {
       ArrayVoltage: faker.number.int({ max: 100, min: 0 }),
       BatteryVoltage: faker.number.int({ max: 100, min: 0 }),
       ChannelNumber: faker.number.int({ max: 100, min: 0 }),
-      IsAlive: faker.number.int({ max: 100, min: 0 }),
+      IsAlive: faker.datatype.boolean(),
       Temperature: faker.number.int({ max: 100, min: 0 }),
     },
 
