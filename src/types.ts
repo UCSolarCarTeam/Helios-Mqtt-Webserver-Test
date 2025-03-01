@@ -247,10 +247,9 @@ export interface IMPPT {
   ArrayVoltage: number;
   BatteryVoltage: number;
   ChannelNumber: number;
-  IsAlive: number;
+  IsAlive: boolean;
   Temperature: number;
 }
-
 export interface IMotorDetails {
   AbsoluteAngle: number;
   CanSendError: boolean;
@@ -326,7 +325,6 @@ export interface IMotorErrors {
   OverspeedError: boolean;
   PositionSensorReadingError: boolean;
 }
-
 export interface IMotorWarnings {
   CanCommsTimeoutWarning: boolean;
   DcOvervoltageWarning: boolean;
