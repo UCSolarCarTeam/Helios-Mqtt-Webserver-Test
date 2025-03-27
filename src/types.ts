@@ -18,16 +18,20 @@ export interface ITelemetryData {
 }
 
 export interface ILapData {
-  ampHours: number;
-  averagePackCurrent: number;
-  averageSpeed: number;
-  batterySecondsRemaining: number;
-  distance: number;
-  lapTime: number;
-  netPowerOut: number;
-  timeStamp: number;
-  totalPowerIn: number;
-  totalPowerOut: number;
+  data: {
+    ampHours: number;
+    averagePackCurrent: number;
+    averageSpeed: number;
+    batterySecondsRemaining: number;
+    distance: number;
+    lapTime: number;
+    netPowerOut: number;
+    timeStamp: number;
+    totalPowerIn: number;
+    totalPowerOut: number;
+  };
+  rfid: number;
+  timestamp: number;
 }
 
 export class LapData {
@@ -41,7 +45,7 @@ export class LapData {
     amphours: number,
     averagePackCurrent: number,
     batterySecondsRemaining: number,
-    averageSpeed: number
+    averageSpeed: number,
   ) {
     this.timestamp = timestamp;
     this.lapTime = lapTime;
@@ -252,97 +256,98 @@ export interface IMPPT {
 }
 export interface IMotorDetails {
   AbsoluteAngle: number;
-  CanSendError: boolean;
-  CanSendWarning: boolean;
   ControlMode: boolean;
   ControlValue: number;
-  CpuOverload: boolean;
-  CpuTempTooHigh: boolean;
-  CpuTemperatureVeryHigh: boolean;
   CurrentMotorPower: number;
   CurrentMotorTorque: number;
   CurrentRpmValue: number;
-  DclinkTempTooHigh: boolean;
-  DclinkTemperatureVeryHigh: boolean;
   DebugMode: boolean;
-  DelayInDclinkCommunication: boolean;
-  DelayInReadingPosSensor: boolean;
-  DelayInReadingTempSensor: boolean;
-  DoubleCanIdOnBus: boolean;
-  HallTempTooHigh: boolean;
-  HallTemperatureVeryHigh: boolean;
-  HwEnableNotSet: boolean;
-  InitError: boolean;
-  InvalidHallSector: boolean;
-  Inverter1TempTooHigh: boolean;
-  Inverter1TempVeryHigh: boolean;
-  Inverter2TempTooHigh: boolean;
-  Inverter2TempVeryHigh: boolean;
-  Inverter3TempTooHigh: boolean;
-  Inverter3TempVeryHigh: boolean;
-  Inverter4TempTooHigh: boolean;
-  Inverter4TempVeryHigh: boolean;
-  Inverter5TempTooHigh: boolean;
-  Inverter5TempVeryHigh: boolean;
-  Inverter6TempTooHigh: boolean;
-  Inverter6TempVeryHigh: boolean;
   InverterPeakCurrent: number;
-  MotorAboutToStall: boolean;
   MotorErrors: IMotorErrors;
   MotorWarnings: IMotorWarnings;
   MotorMode: boolean;
-  MotorStalled: boolean;
   MotorTemperature: number;
-  SettingsNotFound: boolean;
   SoftwareEnable: boolean;
-  StartAtHighRpm: boolean;
-  TorqueLimited: boolean;
-  ZeroPositionOffsetNotSet: boolean;
 }
 
 export interface IMotorErrors {
   CanCommsTimeoutError: boolean;
+  CanSendError: boolean;
   ControllerDataReadingTimeout: boolean;
+  CpuOverload: boolean;
+  CpuTempTooHigh: boolean;
+  DclinkTempTooHigh: boolean;
   DcOvervoltageError: boolean;
+  DcUndervoltageError: boolean;
+  DoubleCanIdOnBus: boolean;
   ErrorInDclinkCommunication: boolean;
   ErrorReadingEncoder: boolean;
   ErrorReadingTempSensor: boolean;
-  DcUndervoltageError: boolean;
+  HallTempTooHigh: boolean;
+  HwEnableNotSet: boolean;
+  InitError: boolean;
+  InvalidHallSector: boolean;
   InvalidHallSensorSequence: boolean;
   Inverter1FaultError: boolean;
   Inverter1OvercurrentError: boolean;
+  Inverter1TempTooHigh: boolean;
   Inverter2FaultError: boolean;
   Inverter2OvercurrentError: boolean;
+  Inverter2TempTooHigh: boolean;
   Inverter3FaultError: boolean;
   Inverter3OvercurrentError: boolean;
+  Inverter3TempTooHigh: boolean;
   Inverter4FaultError: boolean;
   Inverter4OvercurrentError: boolean;
+  Inverter4TempTooHigh: boolean;
   Inverter5FaultError: boolean;
   Inverter5OvercurrentError: boolean;
+  Inverter5TempTooHigh: boolean;
   Inverter6FaultError: boolean;
   Inverter6OvercurrentError: boolean;
+  Inverter6TempTooHigh: boolean;
   LostFramesOnCanBusError: boolean;
+  MotorStalled: boolean;
   OverspeedError: boolean;
   PositionSensorReadingError: boolean;
+  SettingsNotFound: boolean;
+  ZeroPositionOffsetNotSet: boolean;
 }
 export interface IMotorWarnings {
   CanCommsTimeoutWarning: boolean;
+  CanSendWarning: boolean;
+  CpuOverload: boolean;
+  CpuTemperatureVeryHigh: boolean;
+  DclinkTemperatureVeryHigh: boolean;
   DcOvervoltageWarning: boolean;
   DcUndervoltageWarning: boolean;
+  DelayInDclinkCommunication: boolean;
+  DelayInReadingPosSensor: boolean;
+  DelayInReadingTempSensor: boolean;
+  HallTemperatureVeryHigh: boolean;
   Inverter1OverCurrentWarning: boolean;
   Inverter1FaultWarning: boolean;
+  Inverter1TempVeryHigh: boolean;
   Inverter2FaultWarning: boolean;
   Inverter2OverCurrentWarning: boolean;
+  Inverter2TempVeryHigh: boolean;
   Inverter3FaultWarning: boolean;
   Inverter3OverCurrentWarning: boolean;
+  Inverter3TempVeryHigh: boolean;
   Inverter4FaultWarning: boolean;
   Inverter4OverCurrentWarning: boolean;
+  Inverter4TempVeryHigh: boolean;
   Inverter5FaultWarning: boolean;
-  Inverter6FaultWarning: boolean;
   Inverter5OverCurrentWarning: boolean;
+  Inverter5TempVeryHigh: boolean;
+  Inverter6FaultWarning: boolean;
   Inverter6OverCurrentWarning: boolean;
+  Inverter6TempVeryHigh: boolean;
   LostFramesOnCanBusWarning: boolean;
+  MotorAboutToStall: boolean;
   OverspeedWarning: boolean;
+  StartAtHighRpm: boolean;
+  TorqueLimited: boolean;
 }
 
 export interface IProximitySensors {
