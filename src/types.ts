@@ -30,7 +30,7 @@ export interface ILapData {
     totalPowerIn: number;
     totalPowerOut: number;
   };
-  rfid: number;
+  Rfid: number;
   timestamp: number;
 }
 
@@ -74,7 +74,7 @@ export class LapData {
 }
 
 export interface IPi {
-  rfid: number;
+  Rfid: number;
 }
 
 export interface IB3 {
