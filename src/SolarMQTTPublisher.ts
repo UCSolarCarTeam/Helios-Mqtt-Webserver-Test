@@ -58,8 +58,20 @@ export class SolarMQTTPublisher {
         console.log("received ping! Sending pong...", message.toString());
         client.publish(pongTopic, "");
       } else if (topic === telemetryToCarTopic) {
-        const packet: ITelemetryData = JSON.parse(message.toString());
-        console.log("Received telemetry data from car: ", packet);
+        if (
+          message !== null &&
+          message !== undefined &&
+          message.toString().trim() !== ""
+        ) {
+          try {
+            const packet: ITelemetryData = JSON.parse(message.toString());
+            console.log("Received telemetry data from car: ", packet);
+          } catch (error) {
+            console.error("Failed to parse telemetry data:", error);
+          }
+        } else {
+          console.log("Received data is null or empty");
+        }
       }
     });
   }
