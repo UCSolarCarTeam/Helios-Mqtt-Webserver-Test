@@ -4,7 +4,7 @@ import { topics } from "./config";
 import { IClientOptions, type MqttClient, connect } from "mqtt";
 import { generateFakeLapData, generateFakeTelemetryData } from "./utils";
 import { ILapData, ITelemetryData } from "./types";
-const { packetTopic, pingTopic, pongTopic } = topics;
+const { packetTopic, pingTopic, pongTopic, telemetryToCarTopic } = topics;
 const args = process.argv.slice(2);
 
 export class SolarMQTTPublisher {
@@ -41,19 +41,25 @@ export class SolarMQTTPublisher {
   }
   private initializeListeners(client: MqttClient) {
     client.on("connect", () => {
-      client.subscribe([packetTopic, pingTopic], (error) => {
-        if (!error) {
-          console.log("Connected to broker");
-          this.sendPacketEverySecond();
-        } else {
-          console.error("Subscription error: ", error);
+      client.subscribe(
+        [packetTopic, pingTopic, telemetryToCarTopic],
+        (error) => {
+          if (!error) {
+            console.log("Connected to broker");
+            this.sendPacketEverySecond();
+          } else {
+            console.error("Subscription error: ", error);
+          }
         }
-      });
+      );
     });
     client.on("message", (topic, message) => {
       if (topic === pingTopic) {
         console.log("received ping! Sending pong...", message.toString());
         client.publish(pongTopic, "");
+      } else if (topic === telemetryToCarTopic) {
+        const packet: ITelemetryData = JSON.parse(message.toString());
+        console.log("Received telemetry data from car: ", packet);
       }
     });
   }
