@@ -473,7 +473,7 @@ export function generateFakeTelemetryData(): ITelemetryData {
       SoftwareEnable: faker.datatype.boolean(),
     },
     Pi: {
-      Rfid: faker.number.int({ max: 100, min: 0 }),
+      Rfid: faker.number.int({ max: 100, min: 0 }).toString(),
     },
     ProximitySensors: {
       ProximitySensor1: faker.number.int({ max: 100, min: 0 }),
@@ -526,7 +526,7 @@ export function generateFakeTelemetryData(): ITelemetryData {
 
 export function generateFakeLapData(): ILapData {
   return {
-    data:{
+    data: {
       ampHours: faker.number.int({ max: 100, min: 0 }),
       averagePackCurrent: faker.number.int({ max: 100, min: 0 }),
       averageSpeed: faker.number.int({ max: 100, min: 0 }),
@@ -538,7 +538,7 @@ export function generateFakeLapData(): ILapData {
       totalPowerIn: faker.number.int({ max: 100, min: 0 }),
       totalPowerOut: faker.number.int({ max: 100, min: 0 }),
     },
-    Rfid:faker.number.int({ max: 100, min: 0 }),
+    Rfid: faker.number.int({ max: 100, min: 0 }).toString(),
     timestamp: faker.date.past().getTime(),
   };
 }

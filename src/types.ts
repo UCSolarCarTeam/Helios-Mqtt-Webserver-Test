@@ -30,7 +30,7 @@ export interface ILapData {
     totalPowerIn: number;
     totalPowerOut: number;
   };
-  Rfid: number;
+  Rfid: string;
   timestamp: number;
 }
 
@@ -45,7 +45,7 @@ export class LapData {
     amphours: number,
     averagePackCurrent: number,
     batterySecondsRemaining: number,
-    averageSpeed: number,
+    averageSpeed: number
   ) {
     this.timestamp = timestamp;
     this.lapTime = lapTime;
@@ -74,7 +74,7 @@ export class LapData {
 }
 
 export interface IPi {
-  Rfid: number;
+  Rfid: string;
 }
 
 export interface IB3 {
