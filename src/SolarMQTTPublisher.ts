@@ -4,6 +4,7 @@ import { topics } from "./config";
 import { IClientOptions, type MqttClient, connect } from "mqtt";
 import { generateFakeLapData, generateFakeTelemetryData } from "./utils";
 import { ILapData, ITelemetryData } from "./types";
+import { Hydrated_Grand_Full_course } from "./MapData";
 const { packetTopic, pingTopic, pongTopic, telemetryToCarTopic } = topics;
 const args = process.argv.slice(2);
 
@@ -22,6 +23,9 @@ export class SolarMQTTPublisher {
     return myPacket;
   }
   private sendPacketEverySecond() {
+    const packets = Hydrated_Grand_Full_course;
+    const packetCount = packets.length;
+    let currentPacketIndex = 0;
     setInterval(() => {
       if (args.includes("--verbose")) {
         console.log("Verbose mode is enabled");
@@ -32,11 +36,17 @@ export class SolarMQTTPublisher {
         const port = args[portIndex + 1];
         console.log(`Server will run on port: ${port}`);
       }
+      if (currentPacketIndex >= packetCount) {
+        currentPacketIndex = 0;
+      }
       const packet =
         args.includes("--lap") || args.includes("--l")
           ? this.generateNewLapPacket()
-          : this.generateNewPacket();
+          : args.includes("--no-map")
+          ? this.generateNewPacket()
+          : packets[currentPacketIndex];
       this.client.publish(packetTopic, JSON.stringify(packet));
+      currentPacketIndex++;
     }, 1000);
   }
   private initializeListeners(client: MqttClient) {
