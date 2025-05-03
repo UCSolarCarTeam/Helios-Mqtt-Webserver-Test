@@ -50,7 +50,7 @@ export class SolarMQTTPublisher {
     }, 1000);
   }
   private initializeListeners(client: MqttClient) {
-    client.on("connect", () => {
+    this.client.on("connect", () => {
       client.subscribe(
         [packetTopic, pingTopic, telemetryToCarTopic],
         (error) => {
@@ -63,7 +63,7 @@ export class SolarMQTTPublisher {
         }
       );
     });
-    client.on("message", (topic, message) => {
+    this.client.on("message", (topic, message) => {
       if (topic === pingTopic) {
         console.log("received ping! Sending pong...", message.toString());
         client.publish(pongTopic, "");

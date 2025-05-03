@@ -519,7 +519,7 @@ export function generateFakeTelemetryData(): ITelemetryData {
       }),
       MpuTemperature: faker.number.float({ max: 85, min: -40 }),
     },
-    TimeStamp: faker.date.recent().getTime(),
+    TimeStamp: Math.round(faker.date.recent().getTime() / 1000),
     Title: faker.lorem.words(2),
   };
 }
@@ -539,6 +539,6 @@ export function generateFakeLapData(): ILapData {
       totalPowerOut: faker.number.int({ max: 100, min: 0 }),
     },
     Rfid: faker.number.int({ max: 100, min: 0 }).toString(),
-    timestamp: faker.date.past().getTime(),
+    timestamp: Math.round(faker.date.past().getTime() / 1000),
   };
 }
