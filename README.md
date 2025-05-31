@@ -18,6 +18,7 @@ MQTT (Message Queuing Telemetry Transport) is a communication protocol designed 
 MQTT_USERNAME=
 MQTT_PASSWORD=
 ```
+
 (ask your lead for these keys)
 
 2. Run npm i
@@ -35,6 +36,12 @@ npm run dev --l
 # This will generate packet data
 npm run dev
 ```
+
+## Testing lap completion
+
+In `src/tests/testlapcompleted.ts` you can find a file to replace the `util.ts` file
+
+This basically just moves the car up to pass the flag location.
 
 ## Why do we need MQTT?
 
