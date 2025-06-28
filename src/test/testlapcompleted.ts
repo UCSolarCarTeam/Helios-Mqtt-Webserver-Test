@@ -1,11 +1,11 @@
 import { faker } from "@faker-js/faker";
 import { ILapData, ITelemetryData } from "../types";
 
-const FLAG_LAT = 37.004658;
-const FLAG_LNG = -86.36301354;
+const FLAG_LAT = 37.001949324;
+const FLAG_LNG = -86.366554059;
 const STEP_SIZE_METERS = 10;
-const START_OFFSET_METERS = -100;
-const END_OFFSET_METERS = 100;
+const START_OFFSET_METERS = -250;
+const END_OFFSET_METERS = 250;
 
 const metersToLat = (meters: number) => meters / 111111;
 
