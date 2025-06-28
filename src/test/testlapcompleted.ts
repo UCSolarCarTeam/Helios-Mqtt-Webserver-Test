@@ -41,7 +41,7 @@ export function generateFakeTelemetryData(): ITelemetryData {
       HeadlightSignalStatus: faker.datatype.boolean(),
       HornSignalStatus: faker.datatype.boolean(),
       HornSwitchDigital: faker.datatype.boolean(),
-      LapDigital: faker.datatype.boolean(),
+      LapDigital: false, // can set to true if needed
       LeftSignalInput: faker.datatype.boolean(),
       LeftSignalStatus: faker.datatype.boolean(),
       MotorResetDigital: faker.datatype.boolean(),
