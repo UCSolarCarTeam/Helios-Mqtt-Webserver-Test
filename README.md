@@ -47,15 +47,15 @@ This basically just moves the car up to pass the flag location.
 
 The Calgary Solar Car team uses the MQTT protocol to effectively communicate between Helios, the Solar Car, and the [Telemetry server](https://github.com/UCSolarCarTeam/Helios-Telemetry). Helios transmits data such as speed, battery percentage, fault data, etc., in 5kb packets. These packets are then sent to the server where the Telemetry team can process the data and view it in real time. To reliably send and receive this data on the server, MQTT is implemented instead of other communication protocols such as HTTP to address several issues:
 
-- **Efficiency** : MQTT messages are smaller and are binary-based, unlike HTTP.
-- **Bandwidth** : MQTT is efficient in bandwidth usage due to its lightweight nature.
-- **Reliability** : MQTT utilizes TCP rather than UDP, ensuring messages are delivered and not lost, especially over long distances.
+- **Efficiency** : MQTT messages are smaller and are binary-based, unlike HTTP which transmits data in ASCII. It also uses a Pub/Sub model rather than a request/response model, which is critical for real time communication.
+- **Bandwidth** : MQTT is efficient in bandwidth usage due to its lightweight nature. ~2 byte headers vs ~8+ byte headers in HTTP.
+- **Reliability** : MQTT utilizes TCP rather than UDP, ensuring messages are delivered and not lost, especially over long distances. Ensuring QoS.
 - **Communication Model** : MQTT implements a publish/subscribe model rather than a request/response model, which is ideal when connected clients need to receive the same message.
-- **Speed** : MQTT maintains a persistent connection over TCP, allowing for faster communication after the initial handshake. This is crucial for real-time data transmission.
+- **Speed** : MQTT maintains a persistent connection over TCP, allowing for faster communication after the initial handshake. This is crucial for real-time data transmission where latency is often an issue. According to some sources, MQTT can offer up to 66% shorter times on average latency.
 
 ## How does Helios use MQTT?
 
-![image](https://github.com/user-attachments/assets/bb974244-1b7d-4f4d-ad68-38afd6089c53)
+<img width="1394" height="454" alt="image" src="https://github.com/user-attachments/assets/05416396-7118-4e2a-82db-1244c42f5a67" />
 
 ## Simulating a Publisher
 
