@@ -12,18 +12,16 @@ MQTT (Message Queuing Telemetry Transport) is a communication protocol designed 
 
 ## How to use this tool
 
-1. Create a .env file with the following fields:
+1. Create a .env file from the .env.example file and fill in your MQTT credentials:
+   (ask your lead for these keys)
 
-```
-MQTT_USERNAME=
-MQTT_PASSWORD=
-```
+1. Run `docker-compose up --build`
 
-(ask your lead for these keys)
+Alternatively, you can manually run the with the following command:
 
-2. Run npm i
-3. update config.ts
-4. run npm run dev
+1. Run `npm i`
+1. update config.ts
+1. run `npm run dev`
 
 Just a note as well:
 
@@ -55,7 +53,7 @@ The Calgary Solar Car team uses the MQTT protocol to effectively communicate bet
 
 ## How does Helios use MQTT?
 
-<img width="1394" height="454" alt="image" src="https://github.com/user-attachments/assets/05416396-7118-4e2a-82db-1244c42f5a67" />
+![Helios](https://github.com/user-attachments/assets/05416396-7118-4e2a-82db-1244c42f5a67)
 
 ## Simulating a Publisher
 
@@ -100,7 +98,7 @@ This section provides an overview of the various files and directories within th
   generateFakeTelemetryData function creates fake telemetry data using the faker library.
   ITelemetryData interface defines the structure of telemetry data.
 
-## Additional Resources:
+## Additional Resources
 
 - [MQTT.org](https://mqtt.org/)
 - [MQTT on npm](https://www.npmjs.com/package/mqtt)

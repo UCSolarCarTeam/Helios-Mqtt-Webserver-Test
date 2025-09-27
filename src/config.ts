@@ -6,7 +6,7 @@ dotenv.config();
 export const options: IClientOptions = {
   password: process.env.MQTT_PASSWORD,
   protocol: "tcp",
-  host: "localhost",
+  host: process.env.MQTT_HOST || "localhost",
   port: 1883,
   protocolVersion: 3,
   username: process.env.MQTT_USERNAME,
