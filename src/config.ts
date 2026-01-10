@@ -10,10 +10,10 @@ export const options: IClientOptions = {
   port: 1883,
   protocolVersion: 3,
   username: process.env.MQTT_USERNAME,
-};
+} as const;
 export const topics = {
   packetTopic: "packet",
   pingTopic: "ping",
   pongTopic: "pong",
   telemetryToCarTopic: "telemetryToCar",
-};
+} as const;

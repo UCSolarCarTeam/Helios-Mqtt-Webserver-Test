@@ -68,6 +68,7 @@ export class SolarMQTTPublisher {
             console.log("Received telemetry data from car: ", packet);
           } catch (error) {
             console.error("Failed to parse telemetry data:", error);
+            console.error("Received message was:", message.toString());
           }
         } else {
           console.log("Received data is null or empty");
