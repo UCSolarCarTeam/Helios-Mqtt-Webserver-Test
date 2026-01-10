@@ -13,7 +13,7 @@ MQTT (Message Queuing Telemetry Transport) is a communication protocol designed 
 ## How to use this tool
 
 1. Create a .env file from the .env.example file and fill in your MQTT credentials:
-   (ask your lead for these keys)
+   Find it on [Confluence](https://uofcsolarcar.atlassian.net/wiki/spaces/ST/pages/346095617/Helios-Mqtt-Webserver-Test) or ask your lead for these keys.
 
 1. Run `docker-compose up --build`
 
