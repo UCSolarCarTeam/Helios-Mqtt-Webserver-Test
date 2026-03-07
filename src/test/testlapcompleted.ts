@@ -430,23 +430,3 @@ export function generateFakeTelemetryData(): ITelemetryData {
     Title: faker.lorem.words(2),
   };
 }
-
-export function generateFakeLapData(): ILapData {
-  return {
-    data: {
-      ampHours: faker.number.int({ max: 100, min: 0 }),
-      averagePackCurrent: faker.number.int({ max: 100, min: 0 }),
-      averageSpeed: faker.number.int({ max: 100, min: 0 }),
-      batterySecondsRemaining: faker.number.int({ max: 100, min: 0 }),
-      distance: faker.number.int({ max: 100, min: 0 }),
-      lapTime: faker.number.int({ max: 100, min: 0 }),
-      netPowerOut: faker.number.int({ max: 100, min: 0 }),
-      timeStamp: faker.date.past().getTime(),
-      totalPowerIn: faker.number.int({ max: 100, min: 0 }),
-      totalPowerOut: faker.number.int({ max: 100, min: 0 }),
-      energyConsumed: faker.number.int({ max: 100, min: 0 }),
-    },
-    Rfid: faker.number.int({ max: 100, min: 0 }).toString(),
-    timestamp: faker.date.past().getTime(),
-  };
-}

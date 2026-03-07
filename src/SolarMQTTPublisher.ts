@@ -21,8 +21,12 @@ export class SolarMQTTPublisher {
     const myPacket: ILapData = generateFakeLapData();
     return myPacket;
   }
+  private publishInterval: NodeJS.Timeout | null = null;
+
   private sendPacketEverySecond() {
-    setInterval(() => {
+    if (this.publishInterval) return;
+
+    this.publishInterval = setInterval(() => {
       if (args.includes("--verbose")) {
         console.log("Verbose mode is enabled");
       }
@@ -36,6 +40,7 @@ export class SolarMQTTPublisher {
         args.includes("--lap") || args.includes("--l")
           ? this.generateNewLapPacket()
           : this.generateNewPacket();
+
       this.client.publish(packetTopic, JSON.stringify(packet));
     }, 1000);
   }
@@ -50,7 +55,7 @@ export class SolarMQTTPublisher {
           } else {
             console.error("Subscription error: ", error);
           }
-        }
+        },
       );
     });
     client.on("message", (topic, message) => {
@@ -73,6 +78,12 @@ export class SolarMQTTPublisher {
         } else {
           console.log("Received data is null or empty");
         }
+      }
+    });
+    client.on("close", () => {
+      if (this.publishInterval) {
+        clearInterval(this.publishInterval);
+        this.publishInterval = null;
       }
     });
   }
