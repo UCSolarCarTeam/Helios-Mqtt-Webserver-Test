@@ -21,24 +21,25 @@ export class SolarMQTTPublisher {
     const myPacket: ILapData = generateFakeLapData();
     return myPacket;
   }
+  private publishInterval: NodeJS.Timeout | null = null;
+
   private sendPacketEverySecond() {
-    setInterval(() => {
+    if (this.publishInterval) return;
+
+    this.publishInterval = setInterval(() => {
+      if (args.includes("--verbose")) {
+        console.log("Verbose mode is enabled");
+      }
+
+      if (args.includes("--port")) {
+        const portIndex = args.indexOf("--port");
+        const port = args[portIndex + 1];
+        console.log(`Server will run on port: ${port}`);
+      }
       const packet =
         args.includes("--lap") || args.includes("--l")
           ? this.generateNewLapPacket()
           : this.generateNewPacket();
-
-      const now = new Date();
-      const time = now.toLocaleString("en-CA", {
-        year: "numeric",
-        month: "short",
-        day: "2-digit",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: false,
-      });
-      console.log(`${time}.${String(now.getMilliseconds()).padStart(3, "0")}`);
 
       this.client.publish(packetTopic, JSON.stringify(packet));
     }, 1000);
@@ -77,6 +78,12 @@ export class SolarMQTTPublisher {
         } else {
           console.log("Received data is null or empty");
         }
+      }
+    });
+    client.on("close", () => {
+      if (this.publishInterval) {
+        clearInterval(this.publishInterval);
+        this.publishInterval = null;
       }
     });
   }
