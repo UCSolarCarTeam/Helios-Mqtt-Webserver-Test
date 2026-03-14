@@ -447,6 +447,7 @@ export class LapData {
     averagePackCurrent: number,
     batterySecondsRemaining: number,
     averageSpeed: number,
+    averageMotorWattage: number
   ) {
     this.timestamp = timestamp;
     this.lapTime = lapTime;
@@ -459,6 +460,7 @@ export class LapData {
     this.averagePackCurrent = averagePackCurrent;
     this.batterySecondsRemaining = batterySecondsRemaining;
     this.averageSpeed = averageSpeed;
+    this.averageMotorWattage = averageMotorWattage;
   }
 
   lapNumber = -1;
@@ -474,6 +476,7 @@ export class LapData {
   batterySecondsRemaining = -1;
   lapsRemaining = -1;
   averageSpeed = -1;
+  averageMotorWattage = -1;
 }
 export interface IRaceInfo {
   distance: number;
