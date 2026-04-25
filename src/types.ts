@@ -75,7 +75,7 @@ const IContactorType = t.exact(
     MotorPrechargerClosed: t.boolean,
     MotorPrechargerClosing: t.boolean,
     MotorPrechargerError: t.boolean,
-  })
+  }),
 );
 
 const IBatteryType = t.exact(
@@ -114,7 +114,7 @@ const IBatteryType = t.exact(
     PackVoltage: t.number,
     PopulatedCells: t.number,
     RequestedFanSpeed: t.number,
-  })
+  }),
 );
 
 const IBatteryFaultErrorsType = t.exact(
@@ -140,7 +140,7 @@ const IBatteryFaultErrorsType = t.exact(
     VoltageRedundancyFault: t.boolean,
     WeakCellFault: t.boolean,
     WeakPackFault: t.boolean,
-  })
+  }),
 );
 
 const IBatteryFaultWarningsType = t.exact(
@@ -159,14 +159,14 @@ const IBatteryFaultWarningsType = t.exact(
     DclReducedDueToLowPackVoltage: t.boolean,
     DclReducedDueToLowSoc: t.boolean,
     DclReducedDueToTemperature: t.boolean,
-  })
+  }),
 );
 
 const IBatteryFaultsType = t.exact(
   t.type({
     Errors: IBatteryFaultErrorsType,
     Warnings: IBatteryFaultWarningsType,
-  })
+  }),
 );
 
 const IB3Type = t.exact(
@@ -179,7 +179,7 @@ const IB3Type = t.exact(
     ForwardDigital: t.boolean,
     HandbrakeSwitchDigital: t.boolean,
     HazardLightsInput: t.boolean,
-    HeadightsSwitchInput: t.boolean,
+    HeadlightsSwitchInput: t.boolean,
     HeadlightSignalStatus: t.boolean,
     HornSignalStatus: t.boolean,
     HornSwitchDigital: t.boolean,
@@ -193,7 +193,7 @@ const IB3Type = t.exact(
     ReverseDigital: t.boolean,
     RightSignalInput: t.boolean,
     RightSignalStatus: t.boolean,
-  })
+  }),
 );
 
 const IKeyMotorType = t.exact(
@@ -201,7 +201,7 @@ const IKeyMotorType = t.exact(
     BusCurrentOut: t.number,
     KeyMotorVelocity: t.number,
     MotorCurrent: t.number,
-  })
+  }),
 );
 
 const IMBMSType = t.exact(
@@ -263,7 +263,7 @@ const IMBMSType = t.exact(
     StrobeBmsLight: t.boolean,
     SystemState: t.number,
     ThreeAOc: t.boolean,
-  })
+  }),
 );
 
 const IMotorDetailsType = t.exact(
@@ -297,7 +297,7 @@ const IMotorDetailsType = t.exact(
     Vd: t.number,
     VehicleVelocity: t.number,
     Vq: t.number,
-  })
+  }),
 );
 
 const IMPPTType = t.exact(
@@ -334,13 +334,13 @@ const IMPPTType = t.exact(
     Mppt3Ch1ArrayVoltage: t.number,
     Mppt3Ch1BatteryVoltage: t.number,
     Mppt3Ch1UnitTemperature: t.number,
-  })
+  }),
 );
 
 const IPiType = t.exact(
   t.type({
     Rfid: t.string,
-  })
+  }),
 );
 
 const IProximitySensorsType = t.exact(
@@ -349,7 +349,7 @@ const IProximitySensorsType = t.exact(
     ProximitySensor2: t.number,
     ProximitySensor3: t.number,
     ProximitySensor4: t.number,
-  })
+  }),
 );
 
 const ITelemetryType = t.exact(
@@ -372,7 +372,7 @@ const ITelemetryType = t.exact(
     MpuRotationY: t.number,
     MpuRotationZ: t.number,
     MpuTemperature: t.number,
-  })
+  }),
 );
 
 export const ITelemetryDataType = t.exact(
@@ -391,7 +391,7 @@ export const ITelemetryDataType = t.exact(
     Telemetry: ITelemetryType,
     TimeStamp: t.number,
     Title: t.string,
-  })
+  }),
 );
 
 // the codec: smaller data types which make up the large io-ts type for incoming packets (ITelemetryDataType)
@@ -419,21 +419,19 @@ export interface IDriverData {
 }
 
 export interface ILapData {
-  data: {
-    ampHours: number;
-    averagePackCurrent: number;
-    averageSpeed: number;
-    batterySecondsRemaining: number;
-    distance: number;
-    energyConsumed: number;
-    lapTime: number;
-    netPowerOut: number;
-    timeStamp: number;
-    totalPowerIn: number;
-    totalPowerOut: number;
-  };
-  Rfid: string;
-  timestamp: number;
+  AmpHours: number;
+  AverageMotorWattage: number;
+  AveragePackCurrent: number;
+  AverageSpeed: number;
+  BatterySecondsRemaining: number;
+  Distance: number;
+  EnergyConsumed: number;
+  LapTime: number;
+  NetPowerOut: number;
+  timestamp: Date;
+  TotalPowerIn: number;
+  TotalPowerOut: number;
+  rfid: string;
 }
 
 export class LapData {
@@ -448,7 +446,7 @@ export class LapData {
     amphours: number,
     averagePackCurrent: number,
     batterySecondsRemaining: number,
-    averageSpeed: number
+    averageSpeed: number,
   ) {
     this.timestamp = timestamp;
     this.lapTime = lapTime;
@@ -487,26 +485,18 @@ export interface IRaceInfo {
   totalDistance: number;
 }
 
-export interface IPlaybackDynamoResponse {
-  data: ITelemetryData;
-  id: string;
-  timestamp: number;
-}
-
 export interface IFormattedLapData {
-  data: {
-    ampHours: number;
-    averagePackCurrent: number;
-    averageSpeed: number;
-    batterySecondsRemaining: number;
-    distance: number;
-    energyConsumed: number;
-    lapTime: number;
-    netPowerOut: number;
-    timeStamp: string;
-    totalPowerIn: number;
-    totalPowerOut: number;
-  };
-  timestamp: number;
+  AmpHours: number;
+  AverageMotorWattage: number;
+  AveragePackCurrent: number;
+  AverageSpeed: number;
+  BatterySecondsRemaining: number;
+  Distance: number;
+  EnergyConsumed: number;
+  LapTime: number;
+  NetPowerOut: number;
+  TimeStamp: string;
+  TotalPowerIn: number;
+  TotalPowerOut: number;
   Rfid: string;
 }
