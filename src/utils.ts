@@ -12,11 +12,11 @@ export function generateFakeTelemetryData(): ITelemetryData {
       ForwardDigital: faker.datatype.boolean(),
       HandbrakeSwitchDigital: faker.datatype.boolean(),
       HazardLightsInput: faker.datatype.boolean(),
-      HeadightsSwitchInput: faker.datatype.boolean(),
+      HeadlightsSwitchInput: faker.datatype.boolean(),
       HeadlightSignalStatus: faker.datatype.boolean(),
       HornSignalStatus: faker.datatype.boolean(),
       HornSwitchDigital: faker.datatype.boolean(),
-      LapDigital: false, // can set to true to simulate a lap being completed
+      LapDigital: faker.datatype.boolean(),
       LeftSignalInput: faker.datatype.boolean(),
       LeftSignalStatus: faker.datatype.boolean(),
       MotorResetDigital: faker.datatype.boolean(),
@@ -408,20 +408,18 @@ export function generateFakeTelemetryData(): ITelemetryData {
 
 export function generateFakeLapData(): ILapData {
   return {
-    data: {
-      ampHours: faker.number.int({ max: 100, min: 0 }),
-      averagePackCurrent: faker.number.int({ max: 100, min: 0 }),
-      averageSpeed: faker.number.int({ max: 100, min: 0 }),
-      batterySecondsRemaining: faker.number.int({ max: 100, min: 0 }),
-      distance: faker.number.int({ max: 100, min: 0 }),
-      energyConsumed: faker.number.int({ max: 100, min: 0 }),
-      lapTime: faker.number.int({ max: 100, min: 0 }),
-      netPowerOut: faker.number.int({ max: 100, min: 0 }),
-      timeStamp: faker.date.past().getTime(),
-      totalPowerIn: faker.number.int({ max: 100, min: 0 }),
-      totalPowerOut: faker.number.int({ max: 100, min: 0 }),
-    },
-    Rfid: "",
-    timestamp: faker.date.past().getTime(),
+    AmpHours: faker.number.int({ max: 100, min: 0 }),
+    AverageMotorWattage: faker.number.int({ max: 100, min: 0 }),
+    AveragePackCurrent: faker.number.int({ max: 100, min: 0 }),
+    AverageSpeed: faker.number.int({ max: 100, min: 0 }),
+    BatterySecondsRemaining: faker.number.int({ max: 100, min: 0 }),
+    Distance: faker.number.int({ max: 100, min: 0 }),
+    EnergyConsumed: faker.number.int({ max: 100, min: 0 }),
+    LapTime: faker.number.int({ max: 100, min: 0 }),
+    NetPowerOut: faker.number.int({ max: 100, min: 0 }),
+    rfid: "",
+    timestamp: faker.date.past(),
+    TotalPowerIn: faker.number.int({ max: 100, min: 0 }),
+    TotalPowerOut: faker.number.int({ max: 100, min: 0 }),
   };
 }

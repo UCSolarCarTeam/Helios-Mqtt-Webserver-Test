@@ -10,8 +10,10 @@ const args = process.argv.slice(2);
 export class SolarMQTTPublisher {
   client: MqttClient;
   constructor(options: IClientOptions) {
+    console.log("SolarMQTTPublisher constructor");
     this.client = connect(options);
     this.initializeListeners(this.client);
+    console.log("SolarMQTTPublisher successfully initialized");
   }
   private generateNewPacket() {
     const myPacket: ITelemetryData = generateFakeTelemetryData();
@@ -40,7 +42,7 @@ export class SolarMQTTPublisher {
         args.includes("--lap") || args.includes("--l")
           ? this.generateNewLapPacket()
           : this.generateNewPacket();
-
+      console.log("Publishing packet: ", packet);
       this.client.publish(packetTopic, JSON.stringify(packet));
     }, 1000);
   }
